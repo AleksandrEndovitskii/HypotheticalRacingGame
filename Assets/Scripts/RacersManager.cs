@@ -15,7 +15,7 @@ public class RacersManager : MonoBehaviour
         {
             if (racerIndex <= racers.Count)
             {
-                if (racers[racerIndex - 1].IsAlive())
+                if (racers[racerIndex - 1].IsAlive)
                 {
                     //Racer update takes milliseconds
                     racers[racerIndex - 1].Update(deltaTimeS * 1000.0f);
@@ -33,7 +33,7 @@ public class RacersManager : MonoBehaviour
                 var racer2 = racers[racerIndex2];
                 if (racerIndex1 != racerIndex2)
                 {
-                    if (racer1.IsCollidable() && racer2.IsCollidable() && racer1.CollidesWith(racer2))
+                    if (racer1.IsCollidable && racer2.IsCollidable && racer1.IsCollidesWith(racer2))
                     {
                         OnRacerExplodes(racer1);
                         racersNeedingRemoved.Add(racer1);

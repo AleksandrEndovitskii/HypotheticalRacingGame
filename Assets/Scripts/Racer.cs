@@ -1,11 +1,16 @@
 ﻿public class Racer
 {
-    public void Destroy()
+    public bool IsAlive
     {
-        throw new System.NotImplementedException();
+        get { throw new System.NotImplementedException(); }
     }
 
-    public bool IsAlive()
+    public bool IsCollidable
+    {
+        get { throw new System.NotImplementedException(); }
+    }
+
+    public bool IsCollidesWith(Racer racer)
     {
         throw new System.NotImplementedException();
     }
@@ -15,12 +20,7 @@
         throw new System.NotImplementedException();
     }
 
-    public bool IsCollidable()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public bool CollidesWith(Racer racer)
+    public void Destroy()
     {
         throw new System.NotImplementedException();
     }
