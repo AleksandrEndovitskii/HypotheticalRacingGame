@@ -10,11 +10,11 @@ public class RacersManager : MonoBehaviour
     //    Discuss your reasoning for making these changes.
     void UpdateRacers(float deltaTimeS, List<Racer> racers)
     {
-        List<Racer> racersNeedingRemoved = new List<Racer>();
+        var racersNeedingRemoved = new List<Racer>();
         racersNeedingRemoved.Clear();
 
         // Updates the racers that are alive
-        int racerIndex = 0;
+        var racerIndex = 0;
         for (racerIndex = 1; racerIndex <= 1000; racerIndex++)
         {
             if (racerIndex <= racers.Count)
@@ -28,12 +28,12 @@ public class RacersManager : MonoBehaviour
         }
 
         // Collides
-        for (int racerIndex1 = 0; racerIndex1 < racers.Count; racerIndex1++)
+        for (var racerIndex1 = 0; racerIndex1 < racers.Count; racerIndex1++)
         {
-            for (int racerIndex2 = 0; racerIndex2 < racers.Count; racerIndex2++)
+            for (var racerIndex2 = 0; racerIndex2 < racers.Count; racerIndex2++)
             {
-                Racer racer1 = racers[racerIndex1];
-                Racer racer2 = racers[racerIndex2];
+                var racer1 = racers[racerIndex1];
+                var racer2 = racers[racerIndex2];
                 if (racerIndex1 != racerIndex2)
                 {
                     if (racer1.IsCollidable() && racer2.IsCollidable() && racer1.CollidesWith(racer2))
@@ -47,7 +47,7 @@ public class RacersManager : MonoBehaviour
         }
 
         // Gets the racers that are still alive
-        List<Racer> newRacerList = new List<Racer>();
+        var newRacerList = new List<Racer>();
         for (racerIndex = 0; racerIndex != racers.Count; racerIndex++)
         {
             // check if this racer must be removed
@@ -60,7 +60,7 @@ public class RacersManager : MonoBehaviour
         // Get rid of all the exploded racers
         for (racerIndex = 0; racerIndex != racersNeedingRemoved.Count; racerIndex++)
         {
-            int foundRacerIndex = racers.IndexOf(racersNeedingRemoved[racerIndex]);
+            var foundRacerIndex = racers.IndexOf(racersNeedingRemoved[racerIndex]);
             if (foundRacerIndex >= 0) // Check we've not removed this already!
             {
                 racersNeedingRemoved[racerIndex].Destroy();
