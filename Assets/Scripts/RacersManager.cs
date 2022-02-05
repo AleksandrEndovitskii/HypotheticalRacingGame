@@ -23,15 +23,16 @@ public class RacersManager : MonoBehaviour
 
         var explodedRacers = new List<Racer>();
         // Collides
-        for (var racerIndex1 = 0; racerIndex1 < racers.Count; racerIndex1++)
+        var collidableRacers = racers.Where(r => r.IsCollidable).ToList();
+        for (var racerIndex1 = 0; racerIndex1 < collidableRacers.Count; racerIndex1++)
         {
-            for (var racerIndex2 = 0; racerIndex2 < racers.Count; racerIndex2++)
+            for (var racerIndex2 = 0; racerIndex2 < collidableRacers.Count; racerIndex2++)
             {
-                var racer1 = racers[racerIndex1];
-                var racer2 = racers[racerIndex2];
+                var racer1 = collidableRacers[racerIndex1];
+                var racer2 = collidableRacers[racerIndex2];
                 if (racerIndex1 != racerIndex2)
                 {
-                    if (racer1.IsCollidable && racer2.IsCollidable && racer1.IsCollidesWith(racer2))
+                    if (racer1.IsCollidesWith(racer2))
                     {
                         OnRacerExplodes(racer1);
                         explodedRacers.Add(racer1);
