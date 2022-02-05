@@ -18,7 +18,7 @@ public class RacersManager : MonoBehaviour
         foreach (var aliveRacer in aliveRacers)
         {
             //Racer update takes milliseconds
-            aliveRacer.Update(deltaTimeS * RACER_UPDATING_MULTIPLIER);
+            aliveRacer.Update(deltaTimeS * RACER_UPDATING_MULTIPLIER); // TODO: make this operation async?
         }
 
         var explodedRacers = new List<Racer>();
@@ -58,9 +58,9 @@ public class RacersManager : MonoBehaviour
             !explodedRacers.Contains(r)).ToList();
 
         // Builds the list of remaining racers
-        racers = notExplodedRacers;
+        racers = notExplodedRacers; // TODO: remove this?
 
-        notExplodedRacers.Clear();
+        notExplodedRacers.Clear(); // TODO: remove this? - have no sense to clear local variable
     }
 
     private void OnRacerExplodes(Racer racer)
