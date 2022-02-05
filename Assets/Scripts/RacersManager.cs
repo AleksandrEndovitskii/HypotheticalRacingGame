@@ -12,16 +12,11 @@ public class RacersManager : MonoBehaviour
     private void UpdateRacers(float deltaTimeS, List<Racer> racers)
     {
         // Updates the racers that are alive
-        for (var racerIndex = 1; racerIndex <= 1000; racerIndex++)
+        var aliveRacers = racers.Where(racer => racer.IsAlive);
+        foreach (var aliveRacer in aliveRacers)
         {
-            if (racerIndex <= racers.Count)
-            {
-                if (racers[racerIndex - 1].IsAlive)
-                {
-                    //Racer update takes milliseconds
-                    racers[racerIndex - 1].Update(deltaTimeS * 1000.0f);
-                }
-            }
+            //Racer update takes milliseconds
+            aliveRacer.Update(deltaTimeS * 1000.0f);
         }
 
         var racersNeedingRemoved = new List<Racer>();
