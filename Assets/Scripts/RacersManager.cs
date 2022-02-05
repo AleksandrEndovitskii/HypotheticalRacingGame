@@ -46,15 +46,11 @@ public class RacersManager : MonoBehaviour
             !explodedRacers.Contains(r)).ToList();
 
         // Get rid of all the exploded racers
-        for (var racerIndex = 0; racerIndex != explodedRacers.Count; racerIndex++)
+        foreach (var explodedRacer in explodedRacers)
         {
-            var foundRacerIndex = racers.IndexOf(explodedRacers[racerIndex]);
-            if (foundRacerIndex >= 0) // Check we've not removed this already!
-            {
-                explodedRacers[racerIndex].Destroy();
-                racers.Remove(explodedRacers[racerIndex]);
-            }
+            explodedRacer.Destroy();
         }
+        racers.RemoveAll(r=> explodedRacers.Contains(r));
 
         // Builds the list of remaining racers
         racers = notExplodedRacers;
