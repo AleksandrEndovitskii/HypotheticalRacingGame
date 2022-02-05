@@ -8,7 +8,7 @@ public class RacersManager : MonoBehaviour
     //    Rewrite the method to improve its readability and performance without changing its behaviour.
     //    Describe further changes you would make if you could change its behaviour.
     //    Discuss your reasoning for making these changes.
-    void UpdateRacers(float deltaTimeS, List<Racer> racers)
+    private void UpdateRacers(float deltaTimeS, List<Racer> racers)
     {
         var racersNeedingRemoved = new List<Racer>();
 
