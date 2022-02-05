@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RacersManager : MonoBehaviour
 {
+    private const float RACER_UPDATING_MULTIPLIER = 1000.0f;
+
     // Consider a hypothetical racing game where hundreds of cars race on a field.
     // The updateRacers method shown below updates the cars and eliminates the ones that collide.
     //    Rewrite the method to improve its readability and performance without changing its behaviour.
@@ -16,7 +18,7 @@ public class RacersManager : MonoBehaviour
         foreach (var aliveRacer in aliveRacers)
         {
             //Racer update takes milliseconds
-            aliveRacer.Update(deltaTimeS * 1000.0f);
+            aliveRacer.Update(deltaTimeS * RACER_UPDATING_MULTIPLIER);
         }
 
         var racersNeedingRemoved = new List<Racer>();
