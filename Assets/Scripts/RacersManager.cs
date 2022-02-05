@@ -46,16 +46,16 @@ public class RacersManager : MonoBehaviour
             }
         }
 
-        // Gets the racers that are still alive
-        var notExplodedRacers = racers.Where(r =>
-            !explodedRacers.Contains(r)).ToList();
-
         // Get rid of all the exploded racers
         foreach (var explodedRacer in explodedRacers)
         {
             explodedRacer.Destroy();
         }
         racers.RemoveAll(r=> explodedRacers.Contains(r));
+
+        // Gets the racers that are still alive
+        var notExplodedRacers = racers.Where(r =>
+            !explodedRacers.Contains(r)).ToList();
 
         // Builds the list of remaining racers
         racers = notExplodedRacers;
