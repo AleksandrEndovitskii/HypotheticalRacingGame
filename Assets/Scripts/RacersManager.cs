@@ -21,7 +21,7 @@ public class RacersManager : MonoBehaviour
             aliveRacer.Update(deltaTimeS * RACER_UPDATING_MULTIPLIER);
         }
 
-        var racersNeedingRemoved = new List<Racer>();
+        var explodedRacers = new List<Racer>();
         // Collides
         for (var racerIndex1 = 0; racerIndex1 < racers.Count; racerIndex1++)
         {
@@ -34,32 +34,32 @@ public class RacersManager : MonoBehaviour
                     if (racer1.IsCollidable && racer2.IsCollidable && racer1.IsCollidesWith(racer2))
                     {
                         OnRacerExplodes(racer1);
-                        racersNeedingRemoved.Add(racer1);
-                        racersNeedingRemoved.Add(racer2);
+                        explodedRacers.Add(racer1);
+                        explodedRacers.Add(racer2);
                     }
                 }
             }
         }
 
         // Gets the racers that are still alive
-        var newRacerList = racers.Where(r =>
-            !racersNeedingRemoved.Contains(r)).ToList();
+        var notExplodedRacers = racers.Where(r =>
+            !explodedRacers.Contains(r)).ToList();
 
         // Get rid of all the exploded racers
-        for (var racerIndex = 0; racerIndex != racersNeedingRemoved.Count; racerIndex++)
+        for (var racerIndex = 0; racerIndex != explodedRacers.Count; racerIndex++)
         {
-            var foundRacerIndex = racers.IndexOf(racersNeedingRemoved[racerIndex]);
+            var foundRacerIndex = racers.IndexOf(explodedRacers[racerIndex]);
             if (foundRacerIndex >= 0) // Check we've not removed this already!
             {
-                racersNeedingRemoved[racerIndex].Destroy();
-                racers.Remove(racersNeedingRemoved[racerIndex]);
+                explodedRacers[racerIndex].Destroy();
+                racers.Remove(explodedRacers[racerIndex]);
             }
         }
 
         // Builds the list of remaining racers
-        racers = newRacerList;
+        racers = notExplodedRacers;
 
-        newRacerList.Clear();
+        notExplodedRacers.Clear();
     }
 
     private void OnRacerExplodes(Racer racer)
