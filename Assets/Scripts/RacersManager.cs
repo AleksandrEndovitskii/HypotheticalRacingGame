@@ -59,10 +59,7 @@ public class RacersManager : MonoBehaviour
         // Builds the list of remaining racers
         racers = newRacerList;
 
-        for (var racerIndex = 0; racerIndex < newRacerList.Count; racerIndex++)
-        {
-            newRacerList.RemoveAt(0);
-        }
+        newRacerList.Clear();
     }
 
     private void OnRacerExplodes(Racer racer)
