@@ -10,8 +10,6 @@ public class RacersManager : MonoBehaviour
     //    Discuss your reasoning for making these changes.
     private void UpdateRacers(float deltaTimeS, List<Racer> racers)
     {
-        var racersNeedingRemoved = new List<Racer>();
-
         // Updates the racers that are alive
         for (var racerIndex = 1; racerIndex <= 1000; racerIndex++)
         {
@@ -25,6 +23,7 @@ public class RacersManager : MonoBehaviour
             }
         }
 
+        var racersNeedingRemoved = new List<Racer>();
         // Collides
         for (var racerIndex1 = 0; racerIndex1 < racers.Count; racerIndex1++)
         {
