@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RacersManager : MonoBehaviour
@@ -44,15 +45,8 @@ public class RacersManager : MonoBehaviour
         }
 
         // Gets the racers that are still alive
-        var newRacerList = new List<Racer>();
-        for (var racerIndex = 0; racerIndex != racers.Count; racerIndex++)
-        {
-            // check if this racer must be removed
-            if (racersNeedingRemoved.IndexOf(racers[racerIndex]) < 0)
-            {
-                newRacerList.Add(racers[racerIndex]);
-            }
-        }
+        var newRacerList = racers.Where(r =>
+            !racersNeedingRemoved.Contains(r)).ToList();
 
         // Get rid of all the exploded racers
         for (var racerIndex = 0; racerIndex != racersNeedingRemoved.Count; racerIndex++)
