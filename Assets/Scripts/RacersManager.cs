@@ -80,4 +80,9 @@ public class RacersManager : MonoBehaviour
             newRacerList.RemoveAt(0);
         }
     }
+
+    private void OnRacerExplodes(Racer racer)
+    {
+        throw new System.NotImplementedException();
+    }
 }
