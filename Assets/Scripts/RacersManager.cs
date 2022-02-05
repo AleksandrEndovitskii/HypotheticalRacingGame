@@ -11,7 +11,6 @@ public class RacersManager : MonoBehaviour
     void UpdateRacers(float deltaTimeS, List<Racer> racers)
     {
         var racersNeedingRemoved = new List<Racer>();
-        racersNeedingRemoved.Clear();
 
         // Updates the racers that are alive
         var racerIndex = 0;
