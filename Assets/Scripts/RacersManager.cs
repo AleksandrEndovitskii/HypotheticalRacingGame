@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class RacersManager : MonoBehaviour
 {
+    // Consider a hypothetical racing game where hundreds of cars race on a field.
+    // The updateRacers method shown below updates the cars and eliminates the ones that collide.
+    //    Rewrite the method to improve its readability and performance without changing its behaviour.
+    //    Describe further changes you would make if you could change its behaviour.
+    //    Discuss your reasoning for making these changes.
     void UpdateRacers(float deltaTimeS, List<Racer> racers)
     {
         List<Racer> racersNeedingRemoved = new List<Racer>();
