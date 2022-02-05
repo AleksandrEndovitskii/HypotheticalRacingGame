@@ -57,11 +57,7 @@ public class RacersManager : MonoBehaviour
         }
 
         // Builds the list of remaining racers
-        racers.Clear();
-        for (var racerIndex = 0; racerIndex < newRacerList.Count; racerIndex++)
-        {
-            racers.Add(newRacerList[racerIndex]);
-        }
+        racers = newRacerList;
 
         for (var racerIndex = 0; racerIndex < newRacerList.Count; racerIndex++)
         {
